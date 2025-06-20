@@ -1,39 +1,24 @@
-function estimateTransactionFee(){
-    const amountStr= window.prompt("How much are you sending? (KES):");
-    const amount=parseInt(amountStr);
-    console.log (typeof amountStr);
-    console.log (amountStr);
+ function estimateTransactionFee(amountToSend) {
+  let fee = amountToSend * 0.015;
 
-    if(!amount) {
-    console.log("failed to convert");
-    console.log(amountStr
-    );
-    return;
-   }
+  if (fee < 10) {
+    fee = 10;
+  } else if (fee > 70) {
+    fee = 70;
+  }
 
-    let transactionCost = (amount * 1.5)/100;
-    if (transactionCost <=10) {
-      alert('Sending KES ${amount}
-            Transaction cost KES 10
-            Total amount=$(amount+10)
-           );
-         return;  
-   }  
-    if (transactionCost >= 70){
-      alert('Sending KES ${amount}
-            Transaction cost KES 70
-            Total amount=$(amount+70)
-            );
-            return;
-        }
-       alert( Sending KES ${amount}
-              Transaction cost KES 70
-              Total amount=$(amount+transactionCost)
-              );
-      }        
-        
-            
-            
-  
+  const totalDebited = amountToSend + fee;
+
+  console.log(`Sending KES ${amountToSend}:`);
+  console.log(`Calculated Transaction Fee: KES ${fee}`);
+  console.log(`Total amount to be debited: KES ${totalDebited}`);
+  console.log("Send Money Securely!");
+}
+
+const inputAmount = prompt("Unatuma Ngapi? (KES):");
+  estimateTransactionFee(Number(inputAmount));
+
+//estimateTransactionFee(inputamount);
+
 
 
